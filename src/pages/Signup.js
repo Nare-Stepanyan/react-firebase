@@ -1,48 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
+import styles from "./signup.module.css";
+import { useForm } from "react-hook-form";
+import { signup } from "../firebase/auth";
 
 function Signup() {
+  const { register, handleSubmit, reset } = useForm();
+  const [loading, setLoading] = useState(false);
+  const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      await signup(data);
+      reset();
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
+
+  const formClassName = `${loading ? "loading" : ""}`;
   return (
-    <div className="login-container">
-      <div className="ui card login-card">
-        <div className="content">
-          <form className="ui form">
-            <div className="two fields">
-              <div className="field">
-                <label>
-                  First Name
-                  <input
-                    type="text"
-                    name="firstName"
-                    placeholder="First Name"
-                  />
-                </label>
-              </div>
-              <div className="field">
-                <label>
-                  Last Name
-                  <input type="text" name="lastName" placeholder="Last Name" />
-                </label>
-              </div>
-            </div>
-            <div className="field">
-              <label>
-                Email
-                <input type="email" name="email" placeholder="Email" />
-              </label>
-            </div>
-            <div className="field">
-              <label>
-                Password
-                <input type="password" name="password" placeholder="Password" />
-              </label>
-            </div>
-            <button className="ui primary button login" type="submit">
-              Sign Up
-            </button>
-          </form>
-        </div>
+    <>
+      <div className={styles.formWrapper}>
+        <form
+          method="POST"
+          onSubmit={handleSubmit(onSubmit)}
+          className={formClassName}>
+          <div className={styles.formFields}>
+            <label>Firstname</label>
+            <input
+              type="text"
+              name="firstName"
+              defaultValue=""
+              {...register("firstName")}
+            />
+            <label>Lastname</label>
+            <input
+              type="text"
+              name="lastName"
+              defaultValue=""
+              {...register("lastName")}
+            />
+            <label>Email</label>
+            <input
+              type="text"
+              name="email"
+              defaultValue=""
+              {...register("email")}
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              defaultValue=""
+              {...register("password")}
+            />
+
+            <input type="submit" value="Join" className={styles.btnSignIn} />
+          </div>
+          <div className={styles.loginedUser}>
+            <span>Already on FindMe?</span>
+            <span className={styles.alreadyLogined}>Sign in</span>
+          </div>
+        </form>
       </div>
-    </div>
+    </>
   );
 }
 

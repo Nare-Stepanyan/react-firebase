@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Header></Header>
       <div className="app">
-        <div className="ui grid container">
+        <div>
           <Switch>
             <Route exact path="/signup" component={Signup} />
           </Switch>
