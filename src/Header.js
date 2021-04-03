@@ -9,7 +9,7 @@ function Header() {
   const { user } = useSession();
   const logoutUser = async () => {
     await logout();
-    history.push("/login");
+    history.push("/signin");
   };
   return (
     <div className={styles.header}>
