@@ -9,11 +9,11 @@ function Header() {
   const { user } = useSession();
   const logoutUser = async () => {
     await logout();
-    history.push("/signup");
+    history.push("/login");
   };
   return (
     <div className={styles.header}>
-      <h2>Find Me</h2>
+      <h2>FindMe</h2>
       {!!user && (
         <button className={styles.logout} onClick={logoutUser}>
           Logout

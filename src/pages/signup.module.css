@@ -64,3 +64,7 @@ form .btnSignIn:hover {
   justify-content: center;
   align-items: center;
 }
+.loginedUser span {
+  margin-left: 5px;
+  margin-right: 5px;
+}
