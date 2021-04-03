@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import styles from "./signup.module.css";
 import { useForm } from "react-hook-form";
-import { signup } from "../firebase/auth";
+import { login } from "../firebase/auth";
 import { Link } from "react-router-dom";
 
-function Signup(props) {
+function Login(props) {
   const { register, handleSubmit, reset } = useForm();
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
-    let newUser;
+    let user;
     setLoading(true);
     try {
-      newUser = await signup(data);
+      user = await login(data);
       reset();
     } catch (error) {
       console.log(error);
     }
-    if (newUser) {
-      props.history.push(`/profile/${newUser.uid}`);
+    if (user) {
+      props.history.push(`/profile/${user.uid}`);
     } else {
       setLoading(false);
     }
@@ -33,20 +33,6 @@ function Signup(props) {
           onSubmit={handleSubmit(onSubmit)}
           className={formClassName}>
           <div className={styles.formFields}>
-            <label>Firstname</label>
-            <input
-              type="text"
-              name="firstName"
-              defaultValue=""
-              {...register("firstName")}
-            />
-            <label>Lastname</label>
-            <input
-              type="text"
-              name="lastName"
-              defaultValue=""
-              {...register("lastName")}
-            />
             <label>Email</label>
             <input
               type="text"
@@ -62,12 +48,12 @@ function Signup(props) {
               {...register("password")}
             />
 
-            <input type="submit" value="Join" className={styles.btnSignIn} />
+            <input type="submit" value="Sign in" className={styles.btnSignIn} />
           </div>
           <div className={styles.loginedUser}>
-            <span>Already on FindMe?</span>
-            <Link to="/signin">
-              <span className={styles.alreadyLogined}>Sign in</span>
+            <span>New to FindMe? </span>
+            <Link to="/signup">
+              <span className={styles.alreadyLogined}>Join now</span>
             </Link>
           </div>
         </form>
@@ -76,4 +62,4 @@ function Signup(props) {
   );
 }
 
-export default Signup;
+export default Login;

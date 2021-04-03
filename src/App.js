@@ -6,6 +6,7 @@ import Signup from "./pages/Signup";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./firebase/UserProvider";
 import Profile from "./pages/Profile";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <div>
             <Switch>
               <Route exact path="/signup" component={Signup} />
+              <Route exact path="/signin" component={Login} />
               <Route exact path="/profile/:id" component={Profile} />
             </Switch>
           </div>
