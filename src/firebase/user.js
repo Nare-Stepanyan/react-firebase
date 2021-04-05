@@ -17,7 +17,6 @@ export const createUserDocument = async (user) => {
     zip: "",
     phone: "",
     specialty: "",
-    ip: "",
   };
 
   //write to Cloud Firestore
