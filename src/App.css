@@ -25,3 +25,33 @@ header h2 {
 .app {
   margin-top: 100px;
 }
+/* Profile image */
+
+.profile-image {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.profile-image img {
+  width: 30%;
+  height: auto;
+}
+.file-input {
+  display: none;
+}
+.upload-btn {
+  margin-top: 20px;
+  cursor: pointer;
+  padding: 10px;
+  width: 30%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: #2867b2;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.upload-btn:hover {
+  background-color: #004b7c;
+}
