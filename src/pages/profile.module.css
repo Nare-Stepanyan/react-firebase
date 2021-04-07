@@ -59,3 +59,7 @@ form .field select {
   padding: 5px;
   outline: none;
 }
+.profilePage {
+  width: 600px;
+  margin: 0 auto;
+}
