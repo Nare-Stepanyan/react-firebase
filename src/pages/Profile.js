@@ -46,7 +46,7 @@ const Profile = () => {
   const formClassName = `${isLoading ? "loading" : ""}`;
   return (
     <div className={styles.profilePage}>
-      <div>
+      <div className={styles.profileImage}>
         <ProfileImage id={params.id} />
       </div>
       <div className={styles.formWrapper}>
