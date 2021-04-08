@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#firebase private key
+
+/src/firebase/dashboard-13d11-firebase-adminsdk-fm559-27939f5eb3.json
